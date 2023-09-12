@@ -40,7 +40,7 @@ function procuraIp(enderecoIp) {
       span.classList.remove('ativo');
     }, 3000)
   } else {  
-    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_f6ZhpEc7sCd70W27ICmTPvOP4P52a&ipAddress=${enderecoIp}`)
+    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_tAKzi4gu8dpp5LokCrRAQHXuOeE18&ipAddress=${enderecoIp}`)
     .then(data => data.json())
     .then(newData => {
         const novoMapa = document.createElement('div');
@@ -58,9 +58,10 @@ function procuraIp(enderecoIp) {
         timezone.value = localizacaoRecebido.timezone;
         isp.value = ispRecebido;
         
-        var map = L.map('map').setView([lat, lng], 19);
+        console.log(lat, lng);
 
-        
+        var map = L.map('map').setView([lat + 0.002, lng], 19);
+
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 16,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
